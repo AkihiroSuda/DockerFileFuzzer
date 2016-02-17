@@ -19,7 +19,8 @@ But it is attractive in point of its reproducibility that is clear to everyone w
 
 1. Clone random 100 github repositories that contain `Dockerfile`. This repositorie set is used as a "corpus".
 2. Generate a `Dockerfile` using the corpus with some kind of genetic algorithm.
-3. Invoke `docker build` for the generated `Dockerfile` on multiple Docker Machines (dm1: AUFS, dm2: Overlay, ..)
+3. Invoke `docker build` for the generated `Dockerfile` on multiple Docker Machines (dm1: AUFS, dm2: Overlay, ..).
+   This `docker build` will __fail__ after some build steps. But this failure is expected and does not matter.
 4. Compare the number of successful build steps on each of the Docker Machines. Test Oracle: If the number of successful build steps varies, there should be some bug.
 5. Go to 2.
 
@@ -38,6 +39,10 @@ But it is attractive in point of its reproducibility that is clear to everyone w
  * +: the number of successful build steps
  * +: Kernel gcov? (requires `CONFIG_GCOV_KERNEL` and  `CONFIG_GCOV_PROFILE_ALL`)
  * -: time took for build
+
+* Ideas
+ * Can we inject random `rm`, `mv`, `cp` for exploration?  
+
 
 ## Related Work (including non-fuzzing ones)
  
